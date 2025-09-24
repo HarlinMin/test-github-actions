@@ -2,6 +2,9 @@ name: Test Github Actions
 
 on: push
 
+permissions:
+    contents: write
+
 jobs:
     job-build:
         name: 打包工作
