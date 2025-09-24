@@ -3,13 +3,24 @@ name: Test Github Actions
 on: push
 
 jobs:
-    npm-build:
+    job-build:
+        name: 打包工作
         runs-on: ubuntu-latest
+
         steps:
-        - uses: actions/checkout@v4
-        - run: pwd
-        - run: node --version
-        - run: npm i pnpm -g
-        - run: pnpm --version
-        - run: pnpm i
-        - run: pnpm run build
+            - name: 读取仓库内容
+              uses: actions/checkout@v4
+
+            - name: 安装pnpm
+              run: npm i pnpm -g
+                  pnpm --version
+
+            - name: 安装依赖并打包项目
+              run: pnpm i
+                  pnpm run build
+
+            - name: 部署项目
+              uses: JamesIves/github-pages-deploy-action@v4
+              with:
+                  branch: dist
+                  folder: dist
