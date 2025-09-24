@@ -12,12 +12,14 @@ jobs:
               uses: actions/checkout@v4
 
             - name: 安装pnpm
-            - run: npm i pnpm -g
-            - run: pnpm --version
+              run: |
+                npm i pnpm -g
+                pnpm --version
 
             - name: 安装依赖并打包项目
-            - run: pnpm i
-            - run: pnpm run build
+              run: |
+                pnpm i
+                pnpm run build
 
             - name: 部署项目
               uses: JamesIves/github-pages-deploy-action@v4
