@@ -7,8 +7,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - run: pwd
-        - run: curl -fsSL https://bun.sh/install | bash
-        - run: sudo shutdown -r now
-        - run: bun --version
-        - run: bun install
-        - run: bun run build
+        - run: node --version
+        - run: npm i pnpm -g
+        - run: pnpm i
+        - run: pnpm run build
