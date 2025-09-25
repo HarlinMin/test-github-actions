@@ -17,15 +17,19 @@ jobs:
             - name: 读取仓库内容
               uses: actions/checkout@v4 # 添加actions/checkout后可以读取到自己仓库的内容
 
-            - name: 安装pnpm
+            - name: 安装bun
+              uses: oven-sh/setup-bun@v2
+              with:
+                bun-version: latest
+
+            - name: 查看bun版本
               run: |
-                npm i pnpm -g
-                pnpm --version
+                bun --version
 
             - name: 安装依赖并打包项目
               run: |
-                pnpm i
-                pnpm run build
+                bun i
+                bun run build
 
             - name: 部署项目
               uses: JamesIves/github-pages-deploy-action@v4
